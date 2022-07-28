@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "satyaadfv2"
+		},
+		"LS_SQL_sasatyav2_sourcedb_orders_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_sasatyav2_targetdb_orders_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_targetdb_ProductPurchase_2022_connectionString": {
+			"value": ""
+		},
+		"LS_Storage_Sasatyav2_connectionString": {
+			"value": ""
+		}
+	}
+}

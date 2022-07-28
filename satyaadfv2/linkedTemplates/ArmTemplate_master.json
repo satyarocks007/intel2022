@@ -1,0 +1,90 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "satyaadfv2"
+		},
+		"LS_SQL_sasatyav2_sourcedb_orders_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL_sasatyav2_sourcedb_orders'"
+		},
+		"LS_SQL_sasatyav2_targetdb_orders_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL_sasatyav2_targetdb_orders'"
+		},
+		"LS_SQL_targetdb_ProductPurchase_2022_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL_targetdb_ProductPurchase_2022'"
+		},
+		"LS_Storage_Sasatyav2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Storage_Sasatyav2'"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "satyaadfv2_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_sasatyav2_sourcedb_orders_connectionString": {
+						"value": "[parameters('LS_SQL_sasatyav2_sourcedb_orders_connectionString')]"
+					},
+					"LS_SQL_sasatyav2_targetdb_orders_connectionString": {
+						"value": "[parameters('LS_SQL_sasatyav2_targetdb_orders_connectionString')]"
+					},
+					"LS_SQL_targetdb_ProductPurchase_2022_connectionString": {
+						"value": "[parameters('LS_SQL_targetdb_ProductPurchase_2022_connectionString')]"
+					},
+					"LS_Storage_Sasatyav2_connectionString": {
+						"value": "[parameters('LS_Storage_Sasatyav2_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "satyaadfv2_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'satyaadfv2_ArmTemplate_0')]"
+			]
+		}
+	]
+}
