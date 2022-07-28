@@ -1,6 +1,7 @@
 {
 	"name": "PL_copyfileifnotexist",
 	"properties": {
+		"description": "This is for copy file if not exist",
 		"activities": [
 			{
 				"name": "Get Metadata target file",
