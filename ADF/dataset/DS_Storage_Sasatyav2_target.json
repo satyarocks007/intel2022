@@ -1,0 +1,23 @@
+{
+	"name": "DS_Storage_Sasatyav2_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_Sasatyav2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "traget"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

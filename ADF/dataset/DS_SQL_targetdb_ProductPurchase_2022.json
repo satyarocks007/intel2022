@@ -1,0 +1,31 @@
+{
+	"name": "DS_SQL_targetdb_ProductPurchase_2022",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_targetdb_ProductPurchase_2022",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "CustomerCode",
+				"type": "varchar"
+			},
+			{
+				"name": "CustomerName",
+				"type": "varchar"
+			},
+			{
+				"name": "ProductCount",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ProductPurchase_2022"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
